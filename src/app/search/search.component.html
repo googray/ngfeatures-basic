@@ -1,1 +1,6 @@
-<p>search works!</p>
+<div class="serch-div">
+  <span><b>Search:</b></span>
+  <input type="text" (input)="changeSearchValue($event)" />
+  <span>You really search: "{{ searchValue }}"</span>
+</div>
+<!-- [(ngModel)]="enteredSerchValue" (input)="onSearchTextChanged()" -->

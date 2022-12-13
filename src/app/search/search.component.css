@@ -1,0 +1,11 @@
+.serch-div {
+  margin: 10px 0px;
+  padding: 10px 20px;
+}
+input[type="text"] {
+  width: 240px;
+  height: 30px;
+
+  border: none;
+  margin-left: 10px;
+}
