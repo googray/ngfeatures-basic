@@ -1,7 +1,7 @@
-<div class="serch-div">
+<div class="serch-div" [ngClass]="{ changeBackground: searchValue }">
   <span><b>Search:</b></span>
   <!-- <input type="text" (input)="changeSearchValue($event)" /> -->
   <input type="text" [(ngModel)]="searchValue" />
-  <span>You really search: "{{ searchValue }}"</span>
+  <span *ngIf="searchValue">You really search: "{{ searchValue }}"</span>
 </div>
 <!-- [(ngModel)]="enteredSerchValue" (input)="onSearchTextChanged()" -->
