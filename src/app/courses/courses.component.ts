@@ -8,8 +8,8 @@ import { coursesList, Icourses } from 'src/assets/coursesList';
 })
 export class CoursesComponent {
   public courses: Icourses[] = coursesList;
-
   public courseCountRadioButton: string = 'All';
+  public searchText: string = '';
 
   constructor() {}
 
@@ -28,5 +28,10 @@ export class CoursesComponent {
   onFilterRadioButtonChange(data: string) {
     this.courseCountRadioButton = data;
     // console.log('CC: ', this.courseCountRadioButton);
+  }
+
+  onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue;
+    // console.log('ST: ', this.searchText);
   }
 }
