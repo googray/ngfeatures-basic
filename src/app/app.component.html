@@ -1,8 +1,10 @@
 <div class="data-container">
   <label for="input">DOB: </label>
-  <input type="date" name="date" id="date" #dobInput />
+  <input type="date" name="date" id="date" #dobInput (blur)="calculateAge()" />
 </div>
-<div class="ade-container">
+<div class="age-container">
   <label for="input">Age: </label>
   <input type="text" name="text" id="text" #ageInput />
 </div>
+<app-demo></app-demo>
+{{ demoComp.sayHello() }}
