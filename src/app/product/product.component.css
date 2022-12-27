@@ -1,0 +1,9 @@
+.summary {
+  font-size: 14px;
+}
+.card {
+  padding: 10px 10px;
+  margin: 0 10px;
+  background-color: #fff;
+  text-align: center;
+}
