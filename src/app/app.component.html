@@ -1,17 +1,27 @@
 <h1 setBackground>This is App Component</h1>
 
-<div class="container" setBackground>
+<div class="container" setBackground appHover>
   <p>
     This is demo HTML content to understand custom attribute directives in
     Angular.
   </p>
 </div>
 
-<div appHighlight>
+<div appHighlight appHover>
   <p>
     This is demo HTML content to understand custom attribute directives in
     Angular.
   </p>
 </div>
 
+<div
+  class="container"
+  [appBetterhighlight]="'orange'"
+  [defaultColor]="'yellow'"
+  [title]="'Example title'"
+>
+  <p>This is demo HTML content to understand @HostBinding in Angular.</p>
+</div>
+
+<!-- [highlightColor]="'orange'" -->
 <!-- setBackground -->
