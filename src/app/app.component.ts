@@ -10,6 +10,7 @@ export class AppComponent {
 
   public active: boolean = false;
   public display: boolean = false;
+  public occupation: string = 'teacher';
 
   DisplayNotice() {
     this.display = !this.display;
