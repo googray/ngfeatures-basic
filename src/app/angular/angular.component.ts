@@ -5,7 +5,7 @@ import { EnrollService } from '../Services/enroll.service';
   selector: 'app-angular',
   templateUrl: './angular.component.html',
   styleUrls: ['./angular.component.css'],
-  providers: [EnrollService],
+  // providers: [EnrollService],
 })
 export class AngularComponent implements OnInit {
   public title = 'Angular';

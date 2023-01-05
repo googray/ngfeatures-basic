@@ -5,7 +5,7 @@ import { EnrollService } from '../Services/enroll.service';
   selector: 'app-javascript',
   templateUrl: './javascript.component.html',
   styleUrls: ['./javascript.component.css'],
-  providers: [EnrollService],
+  // providers: [EnrollService],
 })
 export class JavascriptComponent implements OnInit {
   public title = 'Javascript';
