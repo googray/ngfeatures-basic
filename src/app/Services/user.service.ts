@@ -1,8 +1,8 @@
-// import { Injectable } from '@angular/core';
+import { LoggerService } from './logger.service';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+import { Injectable } from '@angular/core';
+
+@Injectable()
 export class UserService {
   public users = [
     { name: 'John', status: 'active' },
@@ -12,7 +12,8 @@ export class UserService {
 
   AddNewUser(name: string, status: string) {
     this.users.push({ name: name, status: status });
+    this.logger.LogMessage(name, status);
   }
 
-  constructor() {}
+  constructor(private logger: LoggerService) {}
 }

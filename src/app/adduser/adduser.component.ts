@@ -16,6 +16,6 @@ export class AdduserComponent implements OnInit {
   ngOnInit(): void {}
   AddUser() {
     this.userService.AddNewUser(this.username, this.status);
-    console.log(this.userService.users);
+    // console.log(this.userService.users);
   }
 }
