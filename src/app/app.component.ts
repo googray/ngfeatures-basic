@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { FormRecord } from '@angular/forms';
+import { from, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,34 +10,81 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'prodac-component';
 
-  public myObservable = new Observable((observer) => {
-    console.log('Observable starts');
-    setTimeout(() => {
-      observer.next('1');
-    }, 1000);
-    setTimeout(() => {
-      observer.next('2');
-    }, 2000);
-    setTimeout(() => {
-      observer.next('3');
-    }, 3000);
-    setTimeout(() => {
-      observer.next('4');
-    }, 4000);
-    setTimeout(() => {
-      observer.next('5');
-    }, 5000);
-    // observer.next('1');
-    // observer.next('2');
-    // observer.next('3');
-    // observer.next('4');
-    // observer.next('5');
-    console.log('Observable ends');
-  });
+  // USING OBSERVABLE CONSTRUCTOR
+  // public myObservable = new Observable((observer) => {
+  //   console.log('Observable starts');
+  //   setTimeout(() => {
+  //     observer.next('1');
+  //   }, 1000);
+  //   setTimeout(() => {
+  //     observer.next('2');
+  //   }, 2000);
+  //   setTimeout(() => {
+  //     observer.next('3');
+  //   }, 3000);
+  //   // setTimeout(() => {
+  //   //   observer.error(new Error('Something went wrong! Please try again later'));
+  //   // }, 3000);
+  //   setTimeout(() => {
+  //     observer.next('4');
+  //   }, 4000);
+  //   setTimeout(() => {
+  //     observer.next('5');
+  //   }, 5000);
+  //   setTimeout(() => {
+  //     observer.complete();
+  //   }, 6000);
+  //   // observer.next('1');
+  //   // observer.next('2');
+  //   // observer.next('3');
+  //   // observer.next('4');
+  //   // observer.next('5');
+  //   console.log('Observable ends');
+  // });
+
+  //USING CREATE METHODE
+  // public myObservable = Observable.create((observer: any) => {
+  //   setTimeout(() => {
+  //     observer.next('A');
+  //   }, 1000);
+  //   setTimeout(() => {
+  //     observer.next('B');
+  //   }, 2000);
+  //   setTimeout(() => {
+  //     observer.next('C');
+  //   }, 3000);
+  //   setTimeout(() => {
+  //     observer.next('D');
+  //   }, 4000);
+  //   //   setTimeout(() => {
+  //   //    observer.error(new Error('Something went wrong! Please try again later'));
+  //   //  }, 4000);
+  //   setTimeout(() => {
+  //     observer.next('E');
+  //   }, 5000);
+  //   setTimeout(() => {
+  //     observer.complete();
+  //   }, 7000);
+  // });
+
+  array1 = [1, 2, 6, 7, 8];
+  array2 = ['A', 'B', 'C'];
+
+  // myObservable = of(this.array1, this.array2, 20, 79, 'Hello');
+
+  myObservable = from(this.array1);
 
   ngOnInit() {
-    this.myObservable.subscribe((val) => {
-      console.log(val);
-    });
+    this.myObservable.subscribe(
+      (val: any) => {
+        console.log(val);
+      },
+      (error: any) => {
+        alert(error.message);
+      },
+      () => {
+        alert('Observable has complete emitting all values.');
+      }
+    );
   }
 }
