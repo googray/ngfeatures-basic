@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormRecord } from '@angular/forms';
-import { from, Observable, of } from 'rxjs';
+import { filter, from, map, Observable, of } from 'rxjs';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  // providers:[DataService]
 })
 export class AppComponent implements OnInit {
   title = 'prodac-component';
+
+  constructor(private dataService: DataService) {}
 
   // USING OBSERVABLE CONSTRUCTOR
   // public myObservable = new Observable((observer) => {
@@ -72,19 +76,34 @@ export class AppComponent implements OnInit {
 
   // myObservable = of(this.array1, this.array2, 20, 79, 'Hello');
 
-  myObservable = from(this.array1);
+  public myObservable = from(this.array1); //1,2,6,7,8 => 5,10,30,35,40
+
+  public transformedObs = this.myObservable.pipe(
+    map((val) => {
+      return val * 5;
+    }),
+    filter((val) => {
+      return val >= 30;
+    })
+  );
+
+  // public filteredObs = this.transformedObs.pipe(
+  //   filter((val) => {
+  //     return val >= 30;
+  //   })
+  // );
 
   ngOnInit() {
-    this.myObservable.subscribe(
+    this.transformedObs.subscribe(
       (val: any) => {
         console.log(val);
       },
       (error: any) => {
         alert(error.message);
-      },
-      () => {
-        alert('Observable has complete emitting all values.');
       }
+      // () => {
+      //   alert('Observable has complete emitting all values.');
+      // }
     );
   }
 }
