@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormRecord } from '@angular/forms';
-import { filter, from, map, Observable, of } from 'rxjs';
+import { filter, from, interval, map, Observable, of } from 'rxjs';
 import { DataService } from './data.service';
 
 @Component({
@@ -76,16 +76,16 @@ export class AppComponent implements OnInit {
 
   // myObservable = of(this.array1, this.array2, 20, 79, 'Hello');
 
-  public myObservable = from(this.array1); //1,2,6,7,8 => 5,10,30,35,40
+  //  public myObservable = from(this.array1); //1,2,6,7,8 => 5,10,30,35,40
 
-  public transformedObs = this.myObservable.pipe(
-    map((val) => {
-      return val * 5;
-    }),
-    filter((val) => {
-      return val >= 30;
-    })
-  );
+  // public transformedObs = this.myObservable.pipe(
+  //   map((val) => {
+  //     return val * 5;
+  //   }),
+  //   filter((val) => {
+  //     return val >= 30;
+  //   })
+  // );
 
   // public filteredObs = this.transformedObs.pipe(
   //   filter((val) => {
@@ -93,17 +93,30 @@ export class AppComponent implements OnInit {
   //   })
   // );
 
+  public counterObservable = interval(1000);
+  public counterSub: any;
+
   ngOnInit() {
-    this.transformedObs.subscribe(
-      (val: any) => {
-        console.log(val);
-      },
-      (error: any) => {
-        alert(error.message);
-      }
-      // () => {
-      //   alert('Observable has complete emitting all values.');
-      // }
-    );
+    // this.transformedObs.subscribe(
+    //   (val: any) => {
+    //     console.log(val);
+    //   },
+    //   (error: any) => {
+    //     alert(error.message);
+    //   }
+    // () => {
+    //   alert('Observable has complete emitting all values.');
+    // }
+    // );
+  }
+
+  unsubscribe() {
+    this.counterSub.unsubscribe();
+  }
+
+  subscribe() {
+    this.counterSub = this.counterObservable.subscribe((val) => {
+      console.log(val);
+    });
   }
 }
