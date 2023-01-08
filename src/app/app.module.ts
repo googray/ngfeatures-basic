@@ -9,6 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesService } from './Services/courses.service';
 import { CourseComponent } from './courses/course/course.component';
+import { ErrorComponent } from './error/error.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'Contact', component: ContactComponent },
   { path: 'Courses', component: CoursesComponent },
   { path: 'Course/:id', component: CourseComponent },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
     ContactComponent,
     CoursesComponent,
     CourseComponent,
+    ErrorComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [CoursesService],
