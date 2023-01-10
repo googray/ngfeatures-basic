@@ -11,6 +11,7 @@ import { CoursesService } from './Services/courses.service';
 import { CourseComponent } from './courses/course/course.component';
 import { ErrorComponent } from './error/error.component';
 import { appRoutes } from './Routing/app.routing';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { appRoutes } from './Routing/app.routing';
     CourseComponent,
     ErrorComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
   providers: [CoursesService],
   bootstrap: [AppComponent],
 })
