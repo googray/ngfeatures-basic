@@ -12,6 +12,13 @@ export const appRoutes: Routes = [
   { path: 'About', component: AboutComponent },
   { path: 'Contact', component: ContactComponent },
   { path: 'Courses', component: CoursesComponent },
+  // {
+  //   path: '',
+  //   children: [
+  //     { path: 'Course/:id', component: CourseComponent },
+  //     { path: 'Course/:name', component: CourseComponent },
+  //   ],
+  // },
   { path: 'Course/:id', component: CourseComponent },
   { path: '**', component: ErrorComponent },
 ];
