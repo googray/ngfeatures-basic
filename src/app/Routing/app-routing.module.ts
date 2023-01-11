@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from '../about/about.component';
 import { ContactComponent } from '../contact/contact.component';
 import { CourseComponent } from '../courses/course/course.component';
@@ -22,3 +23,9 @@ export const appRoutes: Routes = [
   { path: 'Course/:id', component: CourseComponent },
   { path: '**', component: ErrorComponent },
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}

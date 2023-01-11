@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -10,7 +9,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { CoursesService } from './Services/courses.service';
 import { CourseComponent } from './courses/course/course.component';
 import { ErrorComponent } from './error/error.component';
-import { appRoutes } from './Routing/app.routing';
+import { AppRoutingModule } from './Routing/app-routing.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -23,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     CourseComponent,
     ErrorComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [CoursesService],
   bootstrap: [AppComponent],
 })
