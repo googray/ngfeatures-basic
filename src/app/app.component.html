@@ -14,18 +14,19 @@
       <!-- <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <a routerLink="" fragment="Home">Home</a>
       </li>
-
       <li [routerLinkActive]="'active'">
         <a routerLink="" fragment="About">About</a>
       </li>
-
       <li routerLinkActive="active">
         <a routerLink="" fragment="Contact">Contact</a>
       </li>
-
       <li routerLinkActive="active">
         <a routerLink="" fragment="Courses">Courses</a>
       </li> -->
+      <span style="float: right">
+        <li (click)="login()"><a>Login</a></li>
+        <li (click)="logout()"><a>Logout</a></li>
+      </span>
     </ul>
   </div>
   <div class="component-container">
