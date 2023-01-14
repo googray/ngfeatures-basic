@@ -6,13 +6,18 @@ import { CourseComponent } from '../courses/course/course.component';
 import { CoursesComponent } from '../courses/courses.component';
 import { ErrorComponent } from '../error/error.component';
 import { HomeComponent } from '../home/home.component';
+import { CanDeactivateGuardService } from '../Services/candeactivate-guard.service';
 import { CourseGuardService } from '../Services/course-guard.service';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'Home', component: HomeComponent },
   { path: 'About', component: AboutComponent },
-  { path: 'Contact', component: ContactComponent },
+  {
+    path: 'Contact',
+    component: ContactComponent,
+    canDeactivate: [CanDeactivateGuardService],
+  },
   // {
   //   path: 'Courses',
   //   component: CoursesComponent,
