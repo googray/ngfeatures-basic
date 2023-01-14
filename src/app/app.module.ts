@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { CourseGuardService } from './Services/course-guard.service';
 import { AuthService } from './Services/auth.service';
 import { CanDeactivateGuardService } from './Services/candeactivate-guard.service';
+import { CourseResolveService } from './Services/course-resolve.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CanDeactivateGuardService } from './Services/candeactivate-guard.servic
     CourseGuardService,
     AuthService,
     CanDeactivateGuardService,
+    CourseResolveService,
   ],
   bootstrap: [AppComponent],
 })

@@ -8,6 +8,7 @@ import { ErrorComponent } from '../error/error.component';
 import { HomeComponent } from '../home/home.component';
 import { CanDeactivateGuardService } from '../Services/candeactivate-guard.service';
 import { CourseGuardService } from '../Services/course-guard.service';
+import { CourseResolveService } from '../Services/course-resolve.service';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ export const appRoutes: Routes = [
   {
     path: 'Courses',
     component: CoursesComponent,
+    resolve: { courses: CourseResolveService },
   },
   {
     path: '',
