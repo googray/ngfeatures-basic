@@ -13,15 +13,23 @@ export const appRoutes: Routes = [
   { path: 'Home', component: HomeComponent },
   { path: 'About', component: AboutComponent },
   { path: 'Contact', component: ContactComponent },
+  // {
+  //   path: 'Courses',
+  //   component: CoursesComponent,
+  //   canActivate: [CourseGuardService],
+  // },
   {
     path: 'Courses',
     component: CoursesComponent,
-    canActivate: [CourseGuardService],
   },
   {
     path: '',
+    canActivateChild: [CourseGuardService],
     children: [
-      { path: 'Course/:id', component: CourseComponent },
+      {
+        path: 'Course/:id',
+        component: CourseComponent,
+      },
       // { path: 'Course/:name', component: CourseComponent },
     ],
   },
