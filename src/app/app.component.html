@@ -23,14 +23,14 @@
     <tr *ngFor="let std of students | filterStudent : filterText">
       <td>{{ std.name }}</td>
       <td>{{ std.course }}</td>
-      <td>{{ std.marks }}</td>
-      <!-- <td><input type="number" value="std.marks" [(ngModel)]="std.marks"></td> -->
+      <!-- <td>{{ std.marks }}</td> -->
+      <td><input type="number" value="std.marks" [(ngModel)]="std.marks" /></td>
       <td>{{ std.marks | percentage : totalMarks : 2 }}</td>
       <td>{{ std.DOB | date : "fullDate" | uppercase }}</td>
       <td>{{ std.gender | lowercase }}</td>
     </tr>
   </table>
-  <!-- <br><br>
+  <br /><br />
   <button (click)="AddDummyStudent()">Add Student</button>
-  <button (click)="ChangeGender()">Change Gender</button> -->
+  <button (click)="ChangeGender()">Change Gender</button>
 </div>

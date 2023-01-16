@@ -20,5 +20,30 @@ export class AppComponent {
     this.totalMarks = this.studentService.totalMarks;
   }
 
+  AddDummyStudent() {
+    let studentCopy = Object.assign([], this.students);
+    // this.students.push({
+    //   name: 'TEST',
+    //   course: 'TEST',
+    //   marks: 520,
+    //   DOB: new Date(),
+    //   gender: 'Female',
+    // });
+    studentCopy.push({
+      name: 'TEST',
+      course: 'TEST',
+      marks: 520,
+      DOB: new Date(),
+      gender: 'Female',
+    });
+    this.students = studentCopy;
+  }
+
+  ChangeGender() {
+    let studentCopy: IStudent[] = Object.assign([], this.students);
+    studentCopy[0].gender = 'female';
+    this.students = studentCopy;
+  }
+
   constructor(private studentService: StudentService) {}
 }

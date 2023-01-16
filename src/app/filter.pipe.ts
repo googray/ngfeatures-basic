@@ -6,6 +6,7 @@ import { IStudent } from './student';
 })
 export class FilterPipe implements PipeTransform {
   transform(students: IStudent[], filterText: string) {
+    console.log('Filter pipe colled!');
     if (students.length === 0 || filterText === '') {
       return students;
     } else {
