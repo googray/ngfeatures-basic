@@ -13,6 +13,7 @@ export class AppComponent {
 
   students!: IStudent[];
   totalMarks!: number;
+  filterText: string = '';
 
   ngOnInit() {
     this.students = this.studentService.students;

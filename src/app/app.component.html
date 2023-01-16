@@ -1,10 +1,12 @@
 <div class="container">
-  <!-- <div>
-    <input type="text"
+  <div>
+    <input
+      type="text"
       placeholder="Search by gender"
-      style="width: 450px; padding: 2px 20px; margin: 10px 0px;height: 30px;"
-      [(ngModel)]="filterText">
-  </div> -->
+      style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px"
+      [(ngModel)]="filterText"
+    />
+  </div>
 
   <!-- <div>
     <h3>Total Students: {{totalStudents | async}}</h3>
@@ -18,7 +20,7 @@
       <th>DOB</th>
       <th>Gender</th>
     </tr>
-    <tr *ngFor="let std of students">
+    <tr *ngFor="let std of students | filterStudent : filterText">
       <td>{{ std.name }}</td>
       <td>{{ std.course }}</td>
       <td>{{ std.marks }}</td>
