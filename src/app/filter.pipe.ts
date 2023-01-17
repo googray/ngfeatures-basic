@@ -3,7 +3,7 @@ import { IStudent } from './student';
 
 @Pipe({
   name: 'filterStudent',
-  // pure: false,
+  pure: false,
 })
 export class FilterPipe implements PipeTransform {
   transform(students: IStudent[], filterText: string) {
