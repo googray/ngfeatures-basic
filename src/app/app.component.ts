@@ -37,13 +37,23 @@ export class AppComponent {
       gender: 'Female',
     });
     this.students = studentCopy;
+    // this.students.push({
+    //   name: 'TEST',
+    //   course: 'TEST',
+    //   marks: 520,
+    //   DOB: new Date(),
+    //   gender: 'Female',
+    // });
   }
 
   ChangeGender() {
     let studentCopy: IStudent[] = Object.assign([], this.students);
     studentCopy[0].gender = 'female';
     this.students = studentCopy;
+    // this.students[0].gender = 'female';
   }
+
+  onMouseMove() {}
 
   constructor(private studentService: StudentService) {}
 }
