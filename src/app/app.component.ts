@@ -16,6 +16,11 @@ export class AppComponent {
   // filterText: string = '';
   _filterText: string = '';
   filteredStudents!: IStudent[];
+  totalStudents = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(this.filteredStudents.length);
+    }, 2000);
+  });
 
   get filterText() {
     return this._filterText;
