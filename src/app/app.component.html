@@ -54,7 +54,7 @@
     </div>
 
     <label for="country">Country</label>
-    <select id="country" name="country" ngModel [ngModel]="defaultCountry">
+    <select id="country" name="country" [ngModel]="defaultCountry">
       <option value="australia">Australia</option>
       <option value="canada">Canada</option>
       <option value="usa">USA</option>
@@ -63,16 +63,22 @@
     </select>
 
     <label for="gender">Gender:</label>
-    <!-- <span *ngFor="let gen of gender"> -->
-    <input type="radio" id="male" value="male" name="gender" ngModel />
-    <!-- id="{{gen.id}}" value="{{gen.value}}"  [ngModel]="defaultGender" -->
-    <label for="male">Male</label>
-    <!-- {{gen.value}} -->
-    <input type="radio" id="female" value="female" name="gender" ngModel />
+    <span *ngFor="let gen of gender">
+      <input
+        type="radio"
+        id="{{ gen.id }}"
+        value="{{ gen.value }}"
+        name="gender"
+        [ngModel]="defaultGender"
+      />
+
+      <label for="male">{{ gen.value }}</label>
+
+      <!-- <input type="radio" id="female" value="female" name="gender" ngModel />
     <label for="female">Female</label>
     <input type="radio" id="other" value="other" name="gender" ngModel />
-    <label for="other">Other</label>
-    <!-- </span> -->
+    <label for="other">Other</label> -->
+    </span>
     <br /><br />
     <label>Hobbies <i>(Optional)</i></label>
     <div class="form-inline">
