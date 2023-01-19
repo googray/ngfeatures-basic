@@ -8,13 +8,17 @@
       id="fname"
       placeholder="Your name.."
       name="firstname"
-      ngModel
+      [(ngModel)]="firstname"
+      required
+      #fname="ngModel"
     />
-    <!--   required #fname="ngModel"> -->
-    <!-- <div>
-          <small *ngIf="fname.invalid && fname.touched">First Name is a required field</small>
-          <span *ngIf="firstname">You entered {{firstname}}</span>
-        </div> -->
+
+    <div>
+      <small *ngIf="fname.invalid && fname.touched"
+        >First Name is a required field</small
+      >
+      <span *ngIf="firstname">You entered {{ firstname }}</span>
+    </div>
 
     <label for="lname">Last Name</label>
     <input
@@ -22,12 +26,12 @@
       id="lname"
       placeholder="Your last name.."
       name="lastname"
-      ngModel
+      [(ngModel)]="lastname"
+      required
     />
-    <!--   required> -->
-    <!-- <div>
-          <span *ngIf="lastname">You entered {{lastname}}</span>
-        </div> -->
+    <div>
+      <span *ngIf="lastname">You entered {{ lastname }}</span>
+    </div>
 
     <label for="email">Email</label>
     <input
@@ -37,8 +41,9 @@
       placeholder="Your last email.."
       name="email"
       ngModel
+      required
+      email
     />
-    <!-- required email> -->
 
     <!-- <div>
           <small *ngIf="personalDetail.invalid && personalDetail.touched">Some of the required fields does not have valid value.</small>
@@ -47,8 +52,7 @@
     <!-- </div> -->
 
     <label for="country">Country</label>
-    <select id="country" name="country" ngModel>
-      <!--  [ngModel]="defaultCountry" -->
+    <select id="country" name="country" ngModel [ngModel]="defaultCountry">
       <option value="australia">Australia</option>
       <option value="canada">Canada</option>
       <option value="usa">USA</option>
@@ -84,11 +88,7 @@
       >
     </div>
 
-    <input
-      type="submit"
-      value="Submit"
-      id="btn"
-    /><!--[disabled]="!myForm.valid"-->
+    <input type="submit" value="Submit" id="btn" [disabled]="!myForm.valid" />
   </form>
 </div>
 
