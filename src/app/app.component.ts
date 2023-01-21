@@ -25,5 +25,28 @@ export class AppComponent implements OnChanges {
     console.log(this.form);
   }
 
+  setDefaultValues() {
+    // this.form.value.personDetails.firstname = 'John';
+    // this.form.value.personDetails.lastname = 'Smith';
+    // this.form.value.personDetails.email = 'abc@example.com';
+    // this.form.setValue({
+    //   country: '',
+    //   gender: '',
+    //   hobbies: '',
+    //   personDetails: {
+    //     firstname: 'John',
+    //     lastname: 'Smith',
+    //     email: 'abc@example.com',
+    //   },
+    // });
+    this.form.form.patchValue({
+      personDetails: {
+        firstname: 'John',
+        lastname: 'Smith',
+        email: 'abc@example.com',
+      },
+    });
+  }
+
   ngOnChanges(): void {}
 }
