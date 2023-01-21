@@ -11,6 +11,10 @@ export class AppComponent implements OnChanges {
   defaultCountry = 'india';
   firstname!: string;
   lastname!: string;
+  email!: string;
+  gen!: string;
+  country!: string;
+
   defaultGender = 'Male';
 
   gender = [
@@ -23,6 +27,14 @@ export class AppComponent implements OnChanges {
 
   onSubmit() {
     console.log(this.form);
+
+    this.firstname = this.form.value.personDetails.firstname;
+    this.lastname = this.form.value.personDetails.lastname;
+    this.email = this.form.value.personDetails.email;
+    this.gen = this.form.value.gender;
+    this.country = this.form.value.country;
+
+    this.form.resetForm();
   }
 
   setDefaultValues() {
