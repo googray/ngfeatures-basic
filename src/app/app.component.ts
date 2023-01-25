@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'prodac-component';
-
   reactiveForm: FormGroup;
+  formStatus;
 
   ngOnInit() {
     this.reactiveForm = new FormGroup({
@@ -41,6 +41,21 @@ export class AppComponent implements OnInit {
         // new FormControl(null, Validators.required),
         // new FormControl(null, Validators.required),
       ]),
+    });
+
+    // this.reactiveForm
+    //   .get('personalDetails.firstname')
+    //   .valueChanges.subscribe((value) => {
+    //     console.log(value);
+    //   });
+
+    // this.reactiveForm.valueChanges.subscribe((value) => {
+    //   console.log(value);
+    // });
+
+    this.reactiveForm.statusChanges.subscribe((value) => {
+      console.log(value);
+      this.formStatus = value;
     });
   }
 
