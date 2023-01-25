@@ -1,6 +1,7 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,11 @@ export class AppComponent implements OnInit {
           Validators.minLength(3),
           this.noSpaceAllowed,
         ]),
-        email: new FormControl(null, [Validators.required, Validators.email]),
+        email: new FormControl(
+          null,
+          [Validators.required, Validators.email],
+          this.emailNotAllowed
+        ),
       }),
       gender: new FormControl('male'),
       country: new FormControl('india'),
@@ -50,6 +55,20 @@ export class AppComponent implements OnInit {
       return { noSpaceAllowed: true };
     }
     return null;
+  }
+
+  //custom async validator
+  emailNotAllowed(control: FormControl): Promise<any> | Observable<any> {
+    const response = new Promise((resolve) => {
+      setTimeout(() => {
+        if (control.value === 'procademy@gmail.com') {
+          resolve({ emailNotAllowed: true });
+        } else {
+          resolve(null);
+        }
+      }, 5000);
+    });
+    return response;
   }
 
   onSubmit() {
