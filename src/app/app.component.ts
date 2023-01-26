@@ -57,6 +57,28 @@ export class AppComponent implements OnInit {
       console.log(value);
       this.formStatus = value;
     });
+
+    // setTimeout(() => {
+    //   this.reactiveForm.setValue({
+    //     personalDetails: {
+    //       firstname: '',
+    //       lastname: '',
+    //       email: 'abc@example.com',
+    //     },
+    //     gender: '',
+    //     country: '',
+    //     hobbies: '',
+    //     skills: [],
+    //   });
+    // }, 5000);
+
+    setTimeout(() => {
+      this.reactiveForm.patchValue({
+        personalDetails: {
+          email: 'abc@example.com',
+        },
+      });
+    }, 5000);
   }
 
   addSkills() {
@@ -88,5 +110,16 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     console.log(this.reactiveForm);
+    this.reactiveForm.reset({
+      personalDetails: {
+        firstname: '',
+        lastname: '',
+        email: '',
+      },
+      gender: 'male',
+      country: 'india',
+      hobbies: '',
+      skills: [],
+    });
   }
 }
