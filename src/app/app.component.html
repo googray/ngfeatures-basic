@@ -48,28 +48,23 @@
                    </tr>
           <tr *ngIf="isFetching && !errorMessage">
             <td colspan="5">Loading....</td>
-          </tr>
+          </tr> -->
           <tr *ngFor="let prod of allProducts; index as i">
-            </tr> --><!---->
-          <tr>
-            <td>1</td>
-            <td>Laptop</td>
-            <td>A Lenovo Laptop</td>
-            <td>$1210</td>
-            <!---->
-            <!-- <td>{{i + 1}}</td>
-            <td>{{prod.pName}}</td>
-            <td>{{prod.desc}}</td>
-            <td>${{prod.price}}</td> -->
+            <td>{{ i + 1 }}</td>
+            <td>{{ prod.pName }}</td>
+            <td>{{ prod.desc }}</td>
+            <td>${{ prod.price }}</td>
             <!-- <td><button class="btn-delete" (click)="onDeleteProduct(prod.id)">Delete</button></td>
             <td><button class="btn-edit" (click)="onEditClicked(prod.id)">Edit</button></td> -->
           </tr>
         </table>
         <hr />
-        <!-- <div class="action-btn-container">
-          <button class="btn-fetch" (click)="onProductsFetch()">Fetch Product</button>
-          <button class="btn-clear" (click)="onDeleteAllProducts()">Clear Product</button>
-        </div> -->
+        <div class="action-btn-container">
+          <button class="btn-fetch" (click)="onProductsFetch()">
+            Fetch Product
+          </button>
+          <!-- <button class="btn-clear" (click)="onDeleteAllProducts()">Clear Product</button> -->
+        </div>
       </div>
     </div>
   </div>
