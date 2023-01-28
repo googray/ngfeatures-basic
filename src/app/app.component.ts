@@ -36,13 +36,15 @@ export class AppComponent implements OnInit {
 
   private fetchProducts() {
     this.http
-      .get<{ [key: string]: IProductCreate }>(
+      .get<{ [key: string]: IProductCreate }>( //IProductCreate
         'https://ngfeatures-general-concepts-default-rtdb.firebaseio.com/product.json'
       )
       .pipe(
         map((res) => {
           const products = [];
           for (const key in res) {
+            // console.log('key: ', key);
+            // console.log('res: ', res);
             if (res.hasOwnProperty(key)) {
               products.push({ ...res[key], id: key });
             }
