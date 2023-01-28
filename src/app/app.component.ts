@@ -1,3 +1,4 @@
+import { formatCurrency } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
@@ -11,6 +12,7 @@ import { IProductCreate } from './model/products';
 export class AppComponent implements OnInit {
   title = 'prodac-component';
   allProducts: IProductCreate[] = [];
+  isFetching: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -35,6 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   private fetchProducts() {
+    this.isFetching = true;
     this.http
       .get<{ [key: string]: IProductCreate }>( //IProductCreate
         'https://ngfeatures-general-concepts-default-rtdb.firebaseio.com/product.json'
@@ -53,8 +56,26 @@ export class AppComponent implements OnInit {
         })
       )
       .subscribe((products) => {
+        this.isFetching = false;
         console.log(products);
         this.allProducts = products;
       });
+  }
+
+  onDeleteProduct(id: string) {
+    this.http
+      .delete(
+        'https://ngfeatures-general-concepts-default-rtdb.firebaseio.com/product/' +
+          id +
+          '.json'
+      )
+      .subscribe();
+  }
+  onDeleteAllProducts() {
+    this.http
+      .delete(
+        'https://ngfeatures-general-concepts-default-rtdb.firebaseio.com/product.json'
+      )
+      .subscribe();
   }
 }
