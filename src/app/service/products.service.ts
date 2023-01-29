@@ -61,5 +61,16 @@ export class ProductsService {
       .subscribe();
   }
 
+  updateProduct(id: string, value: IProductCreate) {
+    this.http
+      .put(
+        'https://ngfeatures-general-concepts-default-rtdb.firebaseio.com/product/' +
+          id +
+          '.json',
+        value
+      )
+      .subscribe();
+  }
+
   constructor(private http: HttpClient) {}
 }
