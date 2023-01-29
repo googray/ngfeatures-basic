@@ -1,12 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProductCreate } from '../model/products';
-import { map } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
+  error = new Subject<string>();
   //Create product in database
   createProduct(products: IProductCreate) {
     console.log(products);
@@ -17,7 +19,14 @@ export class ProductsService {
         products,
         { headers: hHeaders }
       )
-      .subscribe((res) => console.log(res));
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err) => {
+          this.error.next(err.message);
+        }
+      );
   }
 
   //fetch products from DB
@@ -37,6 +46,10 @@ export class ProductsService {
             }
           }
           return products;
+        }),
+        catchError((err) => {
+          //write the logic for logging error
+          return throwError(err);
         })
       );
   }
